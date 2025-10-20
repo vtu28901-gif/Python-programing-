@@ -1,0 +1,56 @@
+6(a)
+def student_record_file_handling():
+    # Create a text file and store student names with their marks
+    with open("students.txt", "w") as file:
+        file.write("John 90\n")
+        file.write("Alice 85\n")
+
+    # Read and display all student records
+    with open("students.txt", "r") as file:
+        print(file.read())
+
+    # Append new student data to the same file
+    with open("students.txt", "a") as file:
+        file.write("Bob 95\n")
+
+    # Search for a student by name in the file
+    with open("students.txt", "r") as file:
+        for line in file:
+            if "John" in line:
+                print(line.strip())
+
+student_record_file_handling()
+
+6(b)
+
+def word_count_analyzer():
+    # Read a text file given by the user
+    filename = input("Enter filename: ")
+    with open(filename, "r") as file:
+        text = file.read()
+
+    # Count and display the number of lines, words, and characters
+    lines = text.splitlines()
+    words = text.split()
+    characters = len(text)
+    print(f"Lines: {len(lines)}")
+    print(f"Words: {len(words)}")
+    print(f"Characters: {characters}")
+
+    # Display the frequency of each word in the file
+    word_freq = {}
+    for word in words:
+        if word in word_freq:
+            word_freq[word] += 1
+        else:
+            word_freq[word] = 1
+    print(word_freq)
+
+    # Store the analysis result in a new file named analysis.txt
+    with open("analysis.txt", "w") as file:
+        file.write(f"Lines: {len(lines)}\n")
+        file.write(f"Words: {len(words)}\n")
+        file.write(f"Characters: {characters}\n")
+        file.write(str(word_freq))
+
+word_count_analyzer()
