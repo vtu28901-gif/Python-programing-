@@ -1,0 +1,52 @@
+2(a)
+
+def water_level_monitoring():
+    # Get water level from user
+    water_level = float(input("Enter water level (in meters): "))
+
+    # Check water level and issue warnings
+    if water_level < 50:
+        print("Low Water Level")
+    elif 50 <= water_level <= 80:
+        print("Normal Water Level")
+    else:
+        print("High Water Level - Caution!")
+
+water_level_monitoring()
+
+2(b)
+
+def otp_verification():
+    # Define correct OTP and maximum attempts
+    correct_otp = "4567"
+    max_attempts = 3
+    attempts = 0
+
+    # Ask for OTP until correct or attempts are exhausted
+    while attempts < max_attempts:
+        otp = input("Enter OTP: ")
+        if otp == correct_otp:
+            print("OTP verification successful!")
+            return
+        else:
+            attempts += 1
+            print(f"Incorrect OTP. Attempts remaining: {max_attempts - attempts}")
+
+    print("OTP verification failed. Attempts exhausted.")
+
+otp_verification()
+
+2(c)
+
+def multiplication_table():
+    # Get number from user
+    num = int(input("Enter a number: "))
+
+    # Generate multiplication table
+    print(f"Multiplication table for {num}:")
+    for i in range(1, 11):
+        product = num * i
+        print(f"{num} x {i} = {product}")
+
+multiplication_table()
+  
