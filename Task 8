@@ -1,0 +1,38 @@
+8 a
+
+
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+n = int(input("Enter the number of Fibonacci numbers to generate: "))
+for num in fibonacci(n):
+    print(num)
+    
+8 b
+
+import time
+import random
+
+def timer_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Function {func.__name__} took {end_time - start_time} seconds to run.")
+        return result
+    return wrapper
+
+@timer_decorator
+def sort_numbers(numbers):
+    return sorted(numbers)
+
+numbers = [random.randint(1, 1000) for _ in range(1000)]
+sorted_numbers = sort_numbers(numbers)
+print(sorted_numbers[:10])
+
+           
+
+    
