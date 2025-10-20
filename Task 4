@@ -1,0 +1,72 @@
+4(a)
+def student_marks_manager():
+    marks = [85, 90, 78, 92, 88]
+
+    # Find the highest and lowest marks
+    highest_mark = max(marks)
+    lowest_mark = min(marks)
+    print(f"Highest mark: {highest_mark}")
+    print(f"Lowest mark: {lowest_mark}")
+
+    # Calculate the average mark
+    average_mark = sum(marks) / len(marks)
+    print(f"Average mark: {average_mark}")
+
+    # Sort the marks in ascending order
+    sorted_marks = sorted(marks)
+    print(f"Sorted marks: {sorted_marks}")
+
+student_marks_manager()
+4(b)
+def employee_records():
+    employees = [
+        (1, "Arun", 50000),
+        (2, "Bala", 60000),
+        (3, "Charlie", 40000),
+        (4, "David", 70000),
+        (5, "Eva", 55000)
+    ]
+
+    # Display the details of the highest paid employee
+    highest_paid_employee = max(employees, key=lambda x: x[2])
+    print(f"Highest paid employee: {highest_paid_employee}")
+
+    # Extract only the employee names into a list
+    employee_names = [employee[1] for employee in employees]
+    print(f"Employee names: {employee_names}")
+
+    # Count how many employees earn more than 50,000
+    high_earners = len([employee for employee in employees if employee[2] > 50000])
+    print(f"Employees earning more than 50,000: {high_earners}")
+
+employee_records()
+
+    4(c)
+def shopping_cart():
+    cart = {
+        "Product1": 100,
+        "Product2": 200,
+        "Product3": 300,
+        "Product4": 400,
+        "Product5": 500
+    }
+
+    # Display all products with prices
+    print("Products and prices:")
+    for product, price in cart.items():
+        print(f"{product}: {price}")
+
+    # Find the total bill amount
+    total_bill = sum(cart.values())
+    print(f"Total bill: {total_bill}")
+
+    # Update the price of one product
+    cart["Product1"] = 150
+    print(f"Updated price of Product1: {cart['Product1']}")
+
+    # Remove a product from the cart
+    del cart["Product2"]
+    print("Product2 removed from cart")
+
+shopping_cart()
+                        
