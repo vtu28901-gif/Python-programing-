@@ -1,0 +1,83 @@
+import pygame
+import sys
+import random
+
+# Initialize Pygame
+pygame.init()
+
+# Set up some constants
+WIDTH, HEIGHT = 800, 600
+CAR_WIDTH = 50
+CAR_HEIGHT = 50
+OBSTACLE_WIDTH = 50
+OBSTACLE_HEIGHT = 50
+CAR_SPEED = 5
+OBSTACLE_SPEED = 3
+
+# Create the game window
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Car Dodging Game")
+
+# Define some colors
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+
+# Set up the car
+car_x = WIDTH // 2 - CAR_WIDTH // 2
+car_y = HEIGHT - CAR_HEIGHT - 20
+
+# Set up the obstacles
+obstacles = []
+obstacle_timer = 0
+
+# Game loop
+clock = pygame.time.Clock()
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and car_x > 0:
+        car_x -= CAR_SPEED
+    if keys[pygame.K_RIGHT] and car_x < WIDTH - CAR_WIDTH:
+        car_x += CAR_SPEED
+
+    # Add obstacles
+    obstacle_timer += 1
+    if obstacle_timer >= 60:
+        obstacle_timer = 0
+        obstacles.append([random.randint(0, WIDTH - OBSTACLE_WIDTH), 0])
+
+    # Move obstacles
+    for i, obstacle in enumerate(obstacles):
+        obstacles[i][1] += OBSTACLE_SPEED
+        if obstacles[i][1] > HEIGHT:
+            obstacles.pop(i)
+
+    # Check for collisions
+    for obstacle in obstacles:
+        if (car_x < obstacle[0] + OBSTACLE_WIDTH and
+            car_x + CAR_WIDTH > obstacle[0] and
+            car_y < obstacle[1] + OBSTACLE_HEIGHT and
+            car_y + CAR_HEIGHT > obstacle[1]):
+            screen.fill(WHITE)
+            font = pygame.font.Font(None, 36)
+            text = font.render("Game Over", True, RED)
+            screen.blit(text, (WIDTH // 2 - 75, HEIGHT // 2))
+            pygame.display.flip()
+            pygame.time.wait(2000)
+            pygame.quit()
+            sys.exit()
+
+    # Draw everything
+    screen.fill(WHITE)
+    pygame.draw.rect(screen, GREEN, (car_x, car_y, CAR_WIDTH, CAR_HEIGHT))
+    for obstacle in obstacles:
+        pygame.draw.rect(screen, RED, (obstacle[0], obstacle[1], OBSTACLE_WIDTH, OBSTACLE_HEIGHT))
+    pygame.display.flip()
+
+    # Cap the frame rate
+    clock.tick(60)
