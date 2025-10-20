@@ -1,0 +1,32 @@
+import matplotlib.pyplot as plt
+
+# Line chart
+months = [1, 2, 3, 4, 5, 6]
+product1_sales = [100, 120, 150, 180, 200, 220]
+product2_sales = [80, 100, 120, 150, 180, 200]
+product3_sales = [60, 80, 100, 120, 150, 180]
+
+plt.plot(months, product1_sales, label='Product 1')
+plt.plot(months, product2_sales, label='Product 2')
+plt.plot(months, product3_sales, label='Product 3')
+plt.title('Monthly Sales')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Bar chart
+total_sales = [sum(product1_sales), sum(product2_sales), sum(product3_sales)]
+products = ['Product 1', 'Product 2', 'Product 3']
+plt.bar(products, total_sales)
+plt.title('Total Sales')
+plt.xlabel('Product')
+plt.ylabel('Sales')
+plt.show()
+
+# Pie chart
+last_month_sales = [product1_sales[-1], product2_sales[-1], product3_sales[-1]]
+plt.pie(last_month_sales, labels=products, autopct='%1.1f%%')
+plt.title('Market Share')
+plt.show()
