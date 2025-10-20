@@ -1,0 +1,81 @@
+5(a)
+def student_record_search():
+    roll_numbers = [1, 2, 3, 4, 5]
+
+    # Linear Search
+    def linear_search(arr, target):
+        for i in range(len(arr)):
+            if arr[i] == target:
+                return i
+        return -1
+
+    # Binary Search
+    def binary_search(arr, target):
+        low, high = 0, len(arr) - 1
+        while low <= high:
+            mid = (low + high) // 2
+            if arr[mid] == target:
+                return mid
+            elif arr[mid] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return -1
+
+    # Search for a roll number
+    roll_number = int(input("Enter roll number: "))
+    index = linear_search(roll_numbers, roll_number)
+    if index != -1:
+        print(f"Roll number {roll_number} found at index {index}")
+    else:
+        print(f"Roll number {roll_number} not found")
+
+    # Binary search after sorting
+    roll_numbers.sort()
+    index = binary_search(roll_numbers, roll_number)
+    if index != -1:
+        print(f"Roll number {roll_number} found at index {index}")
+    else:
+        print(f"Roll number {roll_number} not found")
+
+student_record_search()
+
+5(b)
+
+def product_price_sorting():
+    prices = [100, 200, 50, 300, 400]
+
+    # Bubble Sort
+    def bubble_sort(arr):
+        for i in range(len(arr)):
+            for j in range(len(arr) - 1):
+                if arr[j] > arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        return arr
+
+    # Selection Sort
+    def selection_sort(arr):
+        for i in range(len(arr)):
+            max_index = i
+            for j in range(i + 1, len(arr)):
+                if arr[j] > arr[max_index]:
+                    max_index = j
+            arr[i], arr[max_index] = arr[max_index], arr[i]
+        return arr
+
+    # Insertion Sort
+    def insertion_sort(arr):
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i - 1
+            while j >= 0 and arr[j] > key:
+                arr[j + 1] = arr[j]
+                j -= 1
+            arr[j + 1] = key
+        return arr
+
+    print(f"Bubble sort: {bubble_sort(prices[:])}")
+    print(f"Selection sort: {selection_sort(prices[:])}")
+    print(f"Insertion sort: {insertion_sort(prices[:])}")
+
+product_price_sorting()
