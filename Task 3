@@ -1,0 +1,91 @@
+3(a)
+def movie_ticket_booking():
+    # Define ticket prices for different categories
+    ticket_prices = [200, 150, 300]  # Gold, Silver, Platinum
+
+    # Calculate total cost of tickets purchased by a customer
+    num_tickets = int(input("Enter number of tickets: "))
+    total_cost = 0
+    for i in range(num_tickets):
+        category = input("Enter category (Gold/Silver/Platinum): ")
+        if category.lower() == "gold":
+            total_cost += ticket_prices[0]
+        elif category.lower() == "silver":
+            total_cost += ticket_prices[1]
+        elif category.lower() == "platinum":
+            total_cost += ticket_prices[2]
+        else:
+            print("Invalid category. Skipping...")
+
+    print(f"Total cost: {total_cost}")
+
+    # Find the highest-priced ticket
+    highest_priced_ticket = max(ticket_prices)
+    print(f"Highest priced ticket: {highest_priced_ticket}")
+
+    # Find the lowest-priced ticket
+    lowest_priced_ticket = min(ticket_prices)
+    print(f"Lowest priced ticket: {lowest_priced_ticket}")
+
+movie_ticket_booking()
+
+3(b)
+
+def employee_performance():
+    # Store data for 5 employees
+    employees = [
+        ("Arun", 85),
+        ("Bala", 90),
+        ("Charlie", 78),
+        ("David", 92),
+        ("Eva", 88)
+    ]
+
+    # Display the employee with the highest score
+    highest_scorer = max(employees, key=lambda x: x[1])
+    print(f"Employee with the highest score: {highest_scorer[0]} with score {highest_scorer[1]}")
+
+    # Display all employees who scored more than 80
+    high_performers = [employee for employee in employees if employee[1] > 80]
+    print("Employees who scored more than 80:")
+    for employee in high_performers:
+        print(f"{employee[0]} - {employee[1]}")
+
+employee_performance()
+
+   3(c)
+
+      def library_book_tracker():
+    # Initialize library
+    library = {
+        "Python Basics": "Guido",
+        "AI Fundamentals": "John"
+    }
+
+    while True:
+        print("1. Add a new book-author pair")
+        print("2. Search for the author of a given book")
+        print("3. Display all book-author pairs")
+        print("4. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            book = input("Enter book name: ")
+            author = input("Enter author name: ")
+            library[book] = author
+            print("Book added successfully!")
+        elif choice == "2":
+            book = input("Enter book name: ")
+            if book in library:
+                print(f"Author of '{book}': {library[book]}")
+            else:
+                print("Book not found!")
+        elif choice == "3":
+            for book, author in sorted(library.items()):
+                print(f"{book} - {author}")
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+library_book_tracker()                 
