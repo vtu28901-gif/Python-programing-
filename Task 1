@@ -1,0 +1,59 @@
+1(a)
+
+def calculate_bill():
+    # Get price values from user
+    price1 = float(input("Enter first price: "))
+    price2 = float(input("Enter second price: "))
+
+    # Perform mathematical operations
+    addition = price1 + price2
+    subtraction = price1 - price2
+    multiplication = price1 * price2
+    division = price1 / price2 if price2 != 0 else "Error: Division by zero"
+
+    # Display results
+    print(f"Addition: {addition}")
+    print(f"Subtraction: {subtraction}")
+    print(f"Multiplication: {multiplication}")
+    print(f"Division: {division}")
+
+calculate_bill()
+
+1(b)
+
+def compare_scores():
+    # Get scores from user
+    score1 = float(input("Enter first student's score: "))
+    score2 = float(input("Enter second student's score: "))
+
+    # Evaluate relational expressions
+    is_greater = score1 > score2
+    is_lesser = score1 < score2
+    is_equal = score1 == score2
+
+    # Display results
+    print(f"Is score1 greater than score2? {is_greater}")
+    print(f"Is score1 lesser than score2? {is_lesser}")
+    print(f"Are score1 and score2 equal? {is_equal}")
+
+compare_scores()
+
+1(c)
+
+def check_candidate_qualification():
+    # Get test scores from user
+    test1 = float(input("Enter score for test 1: "))
+    test2 = float(input("Enter score for test 2: "))
+    test3 = float(input("Enter score for test 3: "))
+
+    # Define qualification criteria
+    min_score = 50
+    min_average = 60
+
+    # Evaluate logical conditions
+    is_qualified = (test1 >= min_score and test2 >= min_score and test3 >= min_score) and ((test1 + test2 + test3) / 3 >= min_average)
+
+    # Display result
+    print(f"Is the candidate qualified? {is_qualified}")
+
+check_candidate_qualification()
